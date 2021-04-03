@@ -1,0 +1,36 @@
+.game-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.6rem;
+  background-color: var(--color-black-dark);
+  color: var(--color-white);
+
+  &__poster {
+    display: block;
+    width: 100%;
+    height: 80%;
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  &__info {
+    padding: 1rem;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  &__rating {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+  }
+
+  &__release {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+  }
+}

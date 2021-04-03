@@ -1,12 +1,12 @@
-import { Route, Switch } from 'react-router';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
 
 const App = () => {
   return (
-    <Switch>
-      <Route path='/game/:id' />
-      <Route path='/' exact />
-      <Route path='/' />
-    </Switch>
+    <>
+      <Header />
+      <Main />
+    </>
   );
 };
 

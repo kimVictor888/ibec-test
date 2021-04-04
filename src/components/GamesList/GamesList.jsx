@@ -1,25 +1,37 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchGames, updateGames } from '../../store/actions';
 import GameCard from '../GameCard/GameCard';
-import { fetchGames } from '../../store/actions';
-import './GamesList.scss';
 import InfiniteScroll from 'react-infinite-scroller';
+import './GamesList.scss';
 
 const GamesList = () => {
   const dispatch = useDispatch();
-  const games = useSelector((state) => state.games);
+  const state = useSelector((state) => state);
+  const {
+    games,
+    currentPage,
+    totalHits,
+    initialized,
+    orderList,
+    activeOrder,
+  } = state;
 
   useEffect(() => {
-    dispatch(fetchGames(1));
-  }, [dispatch]);
+    if (!initialized) {
+      dispatch(fetchGames(1, orderList[activeOrder].value));
+    }
+  }, [dispatch, currentPage, initialized, orderList, activeOrder]);
 
   return (
     <InfiniteScroll
       className='games-list'
-      pageStart={0}
-      loadMore={() => dispatch(fetchGames(games.length / 40 + 1))}
-      hasMore={true || false}
-      initialLoad={false}
+      pageStart={currentPage}
+      loadMore={() =>
+        dispatch(updateGames(currentPage, orderList[activeOrder].value))
+      }
+      hasMore={totalHits > games.length}
+      threshold={100}
       loader={
         <div className='loader' key='loading'>
           Loading ...

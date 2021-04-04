@@ -1,0 +1,25 @@
+.platform-filter {
+  margin-top: 1rem;
+  background-color: var(--color-black-dark);
+  padding: 1rem 1.5rem;
+  list-style: none;
+  border-radius: 0.6rem;
+  color: var(--color-gray);
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  &__item {
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      color: var(--color-blue);
+    }
+    &.active {
+      color: var(--color-blue);
+    }
+  }
+}

@@ -15,6 +15,8 @@ const GamesList = () => {
     initialized,
     orderList,
     activeOrder,
+    currentPlatformId,
+    currentSearchString,
   } = state;
 
   useEffect(() => {
@@ -28,7 +30,14 @@ const GamesList = () => {
       className='games-list'
       pageStart={currentPage}
       loadMore={() =>
-        dispatch(updateGames(currentPage, orderList[activeOrder].value))
+        dispatch(
+          updateGames(
+            currentPage,
+            orderList[activeOrder].value,
+            currentPlatformId,
+            currentSearchString
+          )
+        )
       }
       hasMore={totalHits > games.length}
       threshold={100}

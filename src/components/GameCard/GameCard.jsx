@@ -5,7 +5,11 @@ const GameCard = ({ game }) => {
     <div className='game-card'>
       <img
         className='game-card__poster'
-        src={game.background_image}
+        src={
+          game.background_image
+            ? game.background_image
+            : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqEWgS0uxxEYJ0PsOb2OgwyWvC0Gjp8NUdPw&usqp=CAU'
+        }
         alt='poster'
       />
       <div className='game-card__info'>

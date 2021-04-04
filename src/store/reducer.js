@@ -1,6 +1,7 @@
 import {
   CHANGE_ACTIVE_ORDER_SUCCESS,
   FETCH_GAMES_SUCCESS,
+  FETCH_PLATFORMS_SUCCESS,
   UPDATE_GAMES_SUCCESS,
 } from './actionTypes';
 
@@ -12,10 +13,13 @@ const initialState = {
     { label: 'по убыванию даты релиза', value: '-released' },
     { label: 'по возрастанию даты релиза', value: 'released' },
   ],
+  platforms: [],
+  currentPlatformId: null,
   activeOrder: 0,
   initialized: false,
   totalHits: 0,
   currentPage: 1,
+  currentSearchString: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -27,6 +31,8 @@ const reducer = (state = initialState, action) => {
         totalHits: action.payload.totalHits,
         currentPage: action.payload.currentPage,
         initialized: true,
+        currentPlatformId: action.payload.currentPlatformId,
+        currentSearchString: action.payload.currentSearchString,
       };
     case UPDATE_GAMES_SUCCESS:
       return {
@@ -34,6 +40,11 @@ const reducer = (state = initialState, action) => {
         games: state.games.concat(action.payload.games),
         totalHits: action.payload.totalHits,
         currentPage: action.payload.currentPage,
+      };
+    case FETCH_PLATFORMS_SUCCESS:
+      return {
+        ...state,
+        platforms: action.payload,
       };
     case CHANGE_ACTIVE_ORDER_SUCCESS:
       return { ...state, activeOrder: action.payload };

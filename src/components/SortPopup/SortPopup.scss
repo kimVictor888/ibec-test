@@ -1,4 +1,5 @@
 .sort {
+  margin-top: 1rem;
   &__btn {
     display: inline-block;
     width: 100%;
@@ -6,26 +7,25 @@
     border-radius: 0.6rem;
     outline: none;
     border: none;
-    color: var(--color-black);
+    color: var(--color-gray);
     font-weight: 500;
     font-size: 1.8rem;
-    background-color: var(--color-gray);
+    background-color: var(--color-black-dark);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
     &:hover {
-      background-color: var(--color-black-dark);
-      color: var(--color-gray);
+      color: var(--color-blue);
     }
   }
 
   &__popup {
     margin-top: 1rem;
-    background-color: var(--color-gray);
+    background-color: var(--color-black-dark);
     padding: 1rem 1.5rem;
     list-style: none;
     border-radius: 0.6rem;
-    color: var(--color-black);
+    color: var(--color-gray);
     font-size: 1.5rem;
     font-weight: 600;
 
@@ -37,8 +37,7 @@
       transition: all 0.1s ease-in-out;
 
       &:hover {
-        background-color: var(--color-black-dark);
-        color: var(--color-gray);
+        color: var(--color-blue);
       }
     }
   }

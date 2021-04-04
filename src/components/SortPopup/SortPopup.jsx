@@ -7,7 +7,12 @@ const SortPopup = () => {
   const dispatch = useDispatch();
   const [visiblePopup, setVisiblePopup] = useState(false);
   const state = useSelector((state) => state);
-  const { orderList, activeOrder } = state;
+  const {
+    orderList,
+    activeOrder,
+    currentPlatformId,
+    currentSearchString,
+  } = state;
 
   const sortRef = useRef();
 
@@ -23,7 +28,9 @@ const SortPopup = () => {
   const toggleVisiblePopup = () => setVisiblePopup(!visiblePopup);
 
   const handleClickOnType = async (i, item) => {
-    dispatch(changeActiveOrder(i, item.value));
+    dispatch(
+      changeActiveOrder(i, item.value, currentPlatformId, currentSearchString)
+    );
     setVisiblePopup(false);
   };
 

@@ -7,6 +7,10 @@
   color: var(--color-white);
   overflow: hidden;
 
+  &__link {
+    text-decoration: none;
+  }
+
   &__poster {
     display: block;
     width: 100%;

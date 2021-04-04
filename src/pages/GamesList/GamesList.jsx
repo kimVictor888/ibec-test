@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGames, updateGames } from '../../store/actions';
-import GameCard from '../GameCard/GameCard';
+import GameCard from '../../components/GameCard/GameCard';
 import InfiniteScroll from 'react-infinite-scroller';
 import './GamesList.scss';
 

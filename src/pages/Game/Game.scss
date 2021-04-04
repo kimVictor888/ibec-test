@@ -1,0 +1,89 @@
+.game {
+  padding: 4rem;
+  background-color: var(--color-black-dark);
+  border-radius: 0.6rem;
+  display: grid;
+  grid-template-areas:
+    'cover description'
+    'slider description';
+  grid-gap: 2rem;
+  grid-template-columns: 45% auto;
+  color: var(--color-gray);
+
+  &__cover {
+    grid-area: cover;
+    display: block;
+    border-radius: 0.6rem;
+    box-shadow: 0rem 1rem 3rem 0.5rem rgba(0, 0, 0, 0.6);
+    max-width: 100%;
+  }
+
+  &__info {
+    grid-area: description;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__title {
+    font-size: 2.2rem;
+    letter-spacing: 0.2rem;
+    align-self: center;
+  }
+
+  &__about {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.6;
+  }
+
+  &__rating,
+  &__released,
+  &__website {
+    margin-top: 1.5rem;
+    font-size: 1.7rem;
+    letter-spacing: 0.1rem;
+  }
+
+  &__section {
+    margin-top: 2rem;
+
+    &-title {
+      font-size: 1.7rem;
+      letter-spacing: 0.1rem;
+    }
+
+    &-list {
+      list-style: none;
+    }
+
+    &-item {
+      margin-top: 0.2rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  &__website {
+    display: inline-block;
+    color: var(--color-gray);
+    &:hover {
+      color: var(--color-blue);
+    }
+  }
+
+  &__screenshots {
+    grid-area: slider;
+
+    & * {
+      border-radius: 0.6rem;
+    }
+  }
+}
+
+.carousel.carousel-slider {
+  box-shadow: 0rem 1rem 3rem 0.5rem rgba(0, 0, 0, 0.6);
+}
+
+.thumb {
+  cursor: pointer;
+}

@@ -1,6 +1,8 @@
 import {
   CHANGE_ACTIVE_ORDER_SUCCESS,
+  CLEAR_CURRENT_GAME,
   FETCH_GAMES_SUCCESS,
+  FETCH_GAME_SUCCESS,
   FETCH_PLATFORMS_SUCCESS,
   UPDATE_GAMES_SUCCESS,
 } from './actionTypes';
@@ -20,6 +22,7 @@ const initialState = {
   totalHits: 0,
   currentPage: 1,
   currentSearchString: '',
+  currentGame: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -48,6 +51,10 @@ const reducer = (state = initialState, action) => {
       };
     case CHANGE_ACTIVE_ORDER_SUCCESS:
       return { ...state, activeOrder: action.payload };
+    case FETCH_GAME_SUCCESS:
+      return { ...state, currentGame: action.payload };
+    case CLEAR_CURRENT_GAME:
+      return { ...state, currentGame: null };
     default:
       return state;
   }

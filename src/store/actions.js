@@ -1,6 +1,8 @@
 import {
   CHANGE_ACTIVE_ORDER_SUCCESS,
+  CLEAR_CURRENT_GAME,
   FETCH_GAMES_SUCCESS,
+  FETCH_GAME_SUCCESS,
   FETCH_PLATFORMS_SUCCESS,
   UPDATE_GAMES_SUCCESS,
 } from './actionTypes';
@@ -43,6 +45,13 @@ const fetchPlatformsSuccess = (platforms) => ({
   type: FETCH_PLATFORMS_SUCCESS,
   payload: platforms,
 });
+
+const fetchGameSuccess = (game) => ({
+  type: FETCH_GAME_SUCCESS,
+  payload: game,
+});
+
+export const clearCurrentGame = () => ({ type: CLEAR_CURRENT_GAME });
 
 export const fetchGames = (page, order, platform = null, search = '') => async (
   dispatch
@@ -117,8 +126,27 @@ export const fetchPlatforms = () => async (dispatch) => {
     const response = await gamesAxios.get(
       `/platforms/lists/parents?key=${API_KEY}`
     );
-    console.log(response);
     dispatch(fetchPlatformsSuccess(response.data.results));
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const fetchGame = (slug) => async (dispatch) => {
+  try {
+    const responseInfo = await gamesAxios.get(`/games/${slug}?key=${API_KEY}`);
+    const responseScreenshots = await gamesAxios.get(
+      `/games/${slug}/screenshots?key=${API_KEY}`
+    );
+
+    Promise.all([responseInfo, responseScreenshots]).then((responses) =>
+      dispatch(
+        fetchGameSuccess({
+          ...responses[0].data,
+          screenshots: responses[1].data.results,
+        })
+      )
+    );
   } catch (e) {
     console.log(e);
   }

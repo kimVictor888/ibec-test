@@ -1,0 +1,9 @@
+.app {
+  display: grid;
+  grid-template-areas:
+    'header header'
+    'aside main';
+  grid-gap: 2rem;
+  background-color: var(--color-black);
+  grid-template-columns: 25% auto;
+}

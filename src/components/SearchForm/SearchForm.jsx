@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import { fetchGames } from '../../store/actions';
 import './SearchForm.scss';
 
 const SearchForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const state = useSelector((state) => state);
   const { orderList } = state;
   const [searchInput, setSearchInput] = useState('');
@@ -13,7 +15,9 @@ const SearchForm = () => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    dispatch(fetchGames(1, orderList[0].value, null, searchInput));
+    dispatch(fetchGames(1, orderList[0].value, null, searchInput)).then(() =>
+      history.push('/')
+    );
   };
 
   return (

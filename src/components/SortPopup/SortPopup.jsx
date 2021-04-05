@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import { changeActiveOrder } from '../../store/actions';
 import './SortPopup.scss';
 
 const SortPopup = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [visiblePopup, setVisiblePopup] = useState(false);
   const state = useSelector((state) => state);
@@ -19,9 +21,9 @@ const SortPopup = () => {
   const activeLabel = orderList[activeOrder].label;
 
   useEffect(() => {
-    document.body.addEventListener('click', handleOutsideClick);
+    document.body.addEventListener('click', handleClickOutsideSort);
     return () => {
-      document.body.removeEventListener('click', handleOutsideClick);
+      document.body.removeEventListener('click', handleClickOutsideSort);
     };
   }, []);
 
@@ -34,7 +36,7 @@ const SortPopup = () => {
     setVisiblePopup(false);
   };
 
-  const handleOutsideClick = (e) => {
+  const handleClickOutsideSort = (e) => {
     if (!e.path.includes(sortRef.current)) {
       setVisiblePopup(false);
     }
@@ -42,7 +44,10 @@ const SortPopup = () => {
 
   return (
     <div ref={sortRef} className='sort'>
-      <button className='sort__btn' onClick={toggleVisiblePopup}>
+      <button
+        disabled={history.location.pathname !== '/'}
+        className='sort__btn'
+        onClick={toggleVisiblePopup}>
         Сортировка по: <span className='capitalize'>{activeLabel}</span>
       </button>
       {visiblePopup && (

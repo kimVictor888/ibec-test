@@ -21,11 +21,13 @@ const Game = ({ match }) => {
     <>
       {currentGame && (
         <section className='game'>
-          <img
-            src={currentGame.background_image}
-            alt='cover'
-            className='game__cover'
-          />
+          <div className='game__poster'>
+            <img
+              src={currentGame.background_image}
+              alt='cover'
+              className='game__cover'
+            />
+          </div>
           <div className='game__info'>
             <h1 className='game__title'>{currentGame.name}</h1>
             <p className='game__released'>Released: {currentGame.released}</p>
@@ -60,9 +62,11 @@ const Game = ({ match }) => {
                 ))}
               </ul>
             </div>
-            <a className='game__website' href={currentGame.website}>
-              {currentGame.website}
-            </a>
+            {currentGame.website && (
+              <a className='game__website' href={currentGame.website}>
+                Go to official website
+              </a>
+            )}
             <p className='game__about'>{currentGame.description_raw}</p>
           </div>
           <div className='game__screenshots'>

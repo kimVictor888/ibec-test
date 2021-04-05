@@ -1,9 +1,29 @@
 .app {
   display: grid;
+  grid-template-columns: 30% auto;
   grid-template-areas:
     'header header'
     'aside main';
   grid-gap: 2rem;
   background-color: var(--color-black);
-  grid-template-columns: 25% auto;
+
+  @media only screen and (max-width: 1400px) {
+    grid-template-columns: 35% auto;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    grid-template-columns: 40% auto;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media only screen and (max-width: 890px) {
+    grid-template-areas:
+      'header'
+      'aside'
+      'main';
+    grid-template-columns: 100%;
+  }
 }

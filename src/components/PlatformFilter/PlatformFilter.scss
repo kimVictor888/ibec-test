@@ -1,5 +1,5 @@
 .platform-filter {
-  margin-top: 2rem;
+  margin-top: 1rem;
   background-color: var(--color-black-dark);
   padding: 1rem 1.5rem;
   list-style: none;
@@ -7,6 +7,25 @@
   color: var(--color-gray);
   font-size: 1.5rem;
   font-weight: 600;
+
+  &__btn {
+    display: inline-block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 0.6rem;
+    outline: none;
+    border: none;
+    color: var(--color-gray);
+    font-weight: 500;
+    font-size: 1.8rem;
+    background-color: var(--color-black-dark);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--color-blue);
+    }
+  }
 
   &__item {
     text-align: center;
@@ -22,4 +41,8 @@
       color: var(--color-blue);
     }
   }
+}
+
+.filter {
+  margin-top: 2rem;
 }

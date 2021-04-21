@@ -11,6 +11,10 @@
   --color-blue: #20d4e0;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -34,4 +38,3 @@ body {
 .capitalize {
   text-transform: capitalize;
 }
-
